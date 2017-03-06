@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              style="@style/ListItemStyle"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="horizontal">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                style="@style/ListItemStyle">
 
     <ImageView
         android:id="@+id/item_image_view"
@@ -14,7 +11,11 @@
     <LinearLayout
         android:id="@+id/translationLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/item_image_view"
         android:orientation="vertical"
         android:paddingLeft="16dp">
 
@@ -32,4 +33,12 @@
 
     </LinearLayout>
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="@dimen/list_item_play_icon_size"
+        android:layout_height="@dimen/list_item_play_icon_size"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/ic_play_arrow_white_24dp"/>
+
+</RelativeLayout>
