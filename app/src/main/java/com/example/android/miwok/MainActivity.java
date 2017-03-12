@@ -15,11 +15,9 @@
  */
 package com.example.android.miwok;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,58 +28,15 @@ public class MainActivity extends AppCompatActivity {
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
-        // Find and set onClick listener for the Numbers category view
-        TextView numbersTextView = (TextView) findViewById(R.id.numbers);
-        if (numbersTextView != null) {
-            numbersTextView.setOnClickListener(new View.OnClickListener() {
-                // The code in this method will be executed when the numbers View is clicked on.
-                @Override
-                public void onClick(View view) {
-                    Intent numbersIntent = new Intent(MainActivity.this, NumbersActivity.class);
-                    startActivity(numbersIntent);
-                }
-            });
-        }
+        // Find the view pager that will allow the user to swipe between fragments
+        ViewPager viewPager = (ViewPager) findViewById(R.id.mainViewPager);
 
-        // Find and set onClick listener for the Colors category view
-        TextView colorsTextView = (TextView) findViewById(R.id.colors);
-        if (colorsTextView != null) {
-            colorsTextView.setOnClickListener(new View.OnClickListener() {
-                // The code in this method will be executed when the colors View is clicked on.
-                @Override
-                public void onClick(View view) {
-                    Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
-                    startActivity(colorsIntent);
-                }
-            });
-        }
+        // Create an adapter that knows which fragment should be shown on each page
+        CategoryFragmentPagerAdapter adapter = new CategoryFragmentPagerAdapter(getSupportFragmentManager());
 
-        // Find and set onClick listener for the Family category view
-        TextView familyTextView = (TextView) findViewById(R.id.family);
-        if (familyTextView != null) {
-            familyTextView.setOnClickListener(new View.OnClickListener() {
-                // The code in this method will be executed when the family View is clicked on.
-                @Override
-                public void onClick(View view) {
-                    Intent familyIntent = new Intent(MainActivity.this, FamilyActivity.class);
-                    startActivity(familyIntent);
-                }
-            });
-        }
-
-        // Find and set onClick listener for the Phrases category view
-        TextView phrasesTextView = (TextView) findViewById(R.id.phrases);
-        if (phrasesTextView != null) {
-            phrasesTextView.setOnClickListener(new View.OnClickListener() {
-                // The code in this method will be executed when the phrases View is clicked on.
-                @Override
-                public void onClick(View view) {
-                    Intent phrasesIntent = new Intent(MainActivity.this, PhrasesActivity.class);
-                    startActivity(phrasesIntent);
-                }
-            });
-        }
+        // Set the adapter onto the view pager
+        viewPager.setAdapter(adapter);
 
     }
-    
+
 }
